@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+		<script type="text/javascript" src="js/index.js"></script>
+        <title>Showcase</title>
+		
+		<!--Load variables-->
+		<script>
+		function load() {
+			var savegame = JSON.parse(localStorage.getItem("save"));
+			var unlocked = JSON.parse(localStorage.getItem("achievements"));
+			var motorcycleName_ = JSON.parse(localStorage.getItem("motorcycleName"));
+			if (typeof savegame.chromePoints !== "undefined") chromePoints = savegame.chromePoints;
+			if (typeof unlocked.fiftycp !== "undefined") fiftycp = unlocked.fiftycp;
+			if (typeof motorcycleName_.motorcycleName !== "undefined") motorcycleName_ = motorcycleName_.motorcycleName;
+			document.getElementById('chromePoints').innerHTML = chromePoints;
+			document.getElementById('motorcycleName').innerHTML = motorcycleName_;
+		}
+		window.onload = load;
+		</script>
+    </head>
+    <body onload="updateAchievement();">
+		<!--Trophies-->
+		<p class="ach">Achievements</p>
+		<div class="trophies">
+			<img id="trophy" alt="*dust*" src="" width="17%" height="17%"></img>
+		</div>
+		<!--Personal motorcycle & name-->
+		<div class="mycycle">
+			<p>"<span id="motorcycleName">1910 Harley</span>"</p>
+			<img src="img\cycleAvatar.png" alt="Motorcycle Avatar" width="100%"></img>
+		</div>
+		<!--Image Controls--->
+		<div class="buttonWrapper">
+			<button type="button" class="rename" onclick="nameCycle();">Rename</button>			
+		</div>
+		<br/>
+		<!--ChromePoints display-->
+		<div class="tickerChromePoints">
+			<p>ChomePoints:<br><span id="chromePoints">0</span></p>
+		</div>
+		<!--Back Arrow-->
+		<a href="index.html"><img src="img\backarrow.png" alt="backarrow" class="backarrow"></img></a>
+    </body>
+</html>
